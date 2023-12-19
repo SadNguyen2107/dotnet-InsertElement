@@ -74,6 +74,7 @@ namespace MyProgram
             array[6] = 13;
             array[7] = 78;
             array[8] = 101;
+            array[9] = -9;
 
             // Print Out The Array
             PrintArray<int>(array);
@@ -90,6 +91,7 @@ namespace MyProgram
             }
 
             // Ask Index To Input
+            bool hasInsert = false;
             int index_to_insert;
         askIndexInsert:
             Console.Write("Index to input to the array: ");
@@ -117,6 +119,7 @@ namespace MyProgram
                 // Check That Index is Default Value
                 if (array[index_to_insert] == default(int))
                 {
+                    hasInsert = true;
                     array[index_to_insert] = element;
                 }
                 // IF Different Value
@@ -128,6 +131,7 @@ namespace MyProgram
                     if (ans == "y")
                     {
                         // Replace the New Value
+                        hasInsert = true;
                         array[index_to_insert] = element;
                     }
                     else
@@ -140,8 +144,10 @@ namespace MyProgram
 
             // 2 Approaches: InsertElement1 or InsertElement2
             // Insert a New Value
-            InsertElement2<int>(array, index_to_insert, element);
-
+            if (!hasInsert)
+            {
+                InsertElement2<int>(array, index_to_insert, element);
+            }
 
             // Print Out The Array
             PrintArray<int>(array);
